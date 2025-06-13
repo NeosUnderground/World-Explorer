@@ -9,8 +9,10 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <img src="/world-explorer-logo.png" alt="World Explorer logo" className={styles.logoImage} />
-        World Explorer
+        <Link to="/">
+          <img src="/world-explorer-logo.png" alt="World Explorer logo" className={styles.logoImage} />
+          World Explorer
+        </Link>
       </div>
       <button
         className={styles.menuButton}
