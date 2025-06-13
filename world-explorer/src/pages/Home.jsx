@@ -1,18 +1,27 @@
+import { useEffect, useState } from 'react';
 import styles from './Home.module.css';
 import CountryCard from '../components/CountryCard';
+import { fetchAllCountries } from '../utils/api';
 
 export default function Home() {
+  const [countries, setCountries] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchAllCountries()
+      .then(data => setCountries(data))
+      .catch(err => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <p>Loading countries...</p>;
+  if (error) return <p>Error: {error}</p>;
+
   return (
     <div className={styles.grid}>
-      {/* placeholder cards */}
-      {Array.from({ length: 12 }).map((_, idx) => (
-        <CountryCard key={idx} country={{
-          name: { common: 'Placeholder' },
-          flags: { png: 'https://via.placeholder.com/150', alt: 'Placeholder flag' },
-          population: 1000000,
-          region: 'N/A',
-          capital: ['Nowhere']
-        }} />
+      {countries.map((country) => (
+        <CountryCard key={country.cca3} country={country} />
       ))}
     </div>
   );
