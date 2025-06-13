@@ -22,7 +22,11 @@ export default function CountryDetails({ country, imageUrl }) {
         </button>
       </div>
 
-      <img src={country.flags.svg} alt={country.name.common} className={styles.flag} />
+          <img
+          src={imageUrl}
+          alt={`${country.name.common} landscape`}
+          className={styles.terrain}
+        />
       <div className={styles.contentRow}>
         <div className={styles.info}>
           <p><strong>Native Name:</strong> {Object.values(country.name.nativeName || {})[0]?.common}</p>
@@ -33,11 +37,7 @@ export default function CountryDetails({ country, imageUrl }) {
           <p><strong>Borders:</strong> {country.borders ? country.borders.join(', ') : 'None'}</p>
         </div>
         {imageUrl && (
-          <img
-            src={imageUrl}
-            alt={`${country.name.common} landscape`}
-            className={styles.terrain}
-          />
+          <img src={country.flags.svg} alt={country.name.common} className={styles.flag} />
         )}
       </div>
       

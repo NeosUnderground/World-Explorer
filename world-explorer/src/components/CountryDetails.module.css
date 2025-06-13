@@ -35,17 +35,17 @@
 }
 
 .terrain {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.flag {
   flex: 1 1 300px;
   max-width: 400px;
   border-radius: 8px;
   object-fit: cover;
   max-height: 300px;
-}
-
-.flag {
-  max-width: 100%;
-  border-radius: 8px;
-  margin-bottom: 1rem;
 }
 
 .info {
