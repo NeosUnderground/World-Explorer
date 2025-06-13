@@ -3,7 +3,7 @@ import Home from './pages/home';
 import CountryPage from './pages/CountryPage';
 import Favorites from './pages/Favorites';
 import Header from './components/Header';
-import './App.css'; // NEW
+import './App.css'; 
 
 function App() {
   return (

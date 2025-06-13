@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <img src="../../public/world-explorer-logo.png" alt="World Explorer logo" className={styles.logoImage} />
+        <img src="/world-explorer-logo.png" alt="World Explorer logo" className={styles.logoImage} />
         World Explorer
       </div>
       <button
