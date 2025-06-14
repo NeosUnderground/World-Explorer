@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { useFavorites } from '../context/FavoritesContext';
 import styles from './CountryDetails.module.css';
 
 export default function CountryDetails({ country, imageUrl }) {
   const { isFavorite, addFavorite, removeFavorite } = useFavorites();
+    const [imageLoaded, setImageLoaded] = useState(false);
   const fav = isFavorite(country.cca3);
 
   const toggleFavorite = () => {
@@ -22,11 +24,18 @@ export default function CountryDetails({ country, imageUrl }) {
         </button>
       </div>
 
+       <div className={styles.terrainHeaderWrapper}>
+        {!imageLoaded && <div className={styles.loader}></div>}
+        {imageUrl && (
           <img
-          src={imageUrl}
-          alt={`${country.name.common} landscape`}
-          className={styles.terrain}
-        />
+            src={imageUrl}
+            alt={`${country.name.common} landscape`}
+            className={`${styles.terrainHeader} ${!imageLoaded ? styles.hidden : ''}`}
+            onLoad={() => setImageLoaded(true)}
+          />
+        )}
+      </div>
+
       <div className={styles.contentRow}>
         <div className={styles.info}>
           <p><strong>Native Name:</strong> {Object.values(country.name.nativeName || {})[0]?.common}</p>
