@@ -1,3 +1,4 @@
+import React from 'react'; 
 import { Link } from 'react-router-dom';
 import { useFavorites } from '../context/FavoritesContext';
 import styles from './CountryCard.module.css';

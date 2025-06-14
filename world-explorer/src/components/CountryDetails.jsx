@@ -1,3 +1,4 @@
+import React from 'react'; 
 import { useState } from 'react';
 import { useFavorites } from '../context/FavoritesContext';
 import styles from './CountryDetails.module.css';
@@ -16,16 +17,16 @@ export default function CountryDetails({ country, imageUrl }) {
       <div className={styles.topBar}>
         <h1>{country.name.common}</h1>
         <button
+          aria-label={fav ? 'Unfavorite' : 'Favorite'}
           className={`${styles.favorite} ${fav ? styles.active : ''}`}
           onClick={toggleFavorite}
-          title={fav ? 'Unfavorite' : 'Favorite'}
         >
           ★
         </button>
       </div>
 
        <div className={styles.terrainHeaderWrapper}>
-        {!imageLoaded && <div className={styles.loader}></div>}
+        {!imageLoaded && <div className={styles.loader} role="status" aria-label="Loading image"></div>}
         {imageUrl && (
           <img
             src={imageUrl}
